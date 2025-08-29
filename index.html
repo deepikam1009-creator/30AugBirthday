@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday My Love</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      background:linear-gradient(135deg,#fce7f3,#f3e8ff,#ede9fe,#ffeef8);
+      color:#4b3b47;
+      text-align:center;
+      overflow-x:hidden;
+    }
+
+    /* floating background hearts & roses */
+    .floating {
+      position:fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      pointer-events:none;
+      z-index:-1;
+      overflow:hidden;
+    }
+    .floating span {
+      position:absolute;
+      display:inline-block;
+      color:rgba(186,85,211,0.35);
+      font-size:26px;
+      animation: floatUp 15s linear infinite;
+    }
+    .floating span.rose {
+      color:rgba(255,182,193,0.4);
+      font-size:30px;
+    }
+    @keyframes floatUp {
+      0% { transform:translateY(100vh) scale(0.8); opacity:0; }
+      20%{opacity:1;}
+      100% { transform:translateY(-10vh) scale(1.2); opacity:0; }
+    }
+
+    header {
+      padding:60px 20px 80px;
+      background:linear-gradient(135deg,#e9d5ff,#fbcfe8);
+      color:#3b0764;
+      border-bottom-left-radius:40% 10%;
+      border-bottom-right-radius:40% 10%;
+      position:relative;
+      overflow:hidden;
+      height:200px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.05);
+    }
+    header h1 {
+      font-family:'Dancing Script',cursive;
+      font-size:52px;
+      margin:0;
+    }
+    header p {
+      font-size:20px;
+      margin-top:12px;
+      color:#5b4267;
+    }
+
+    /* Birthday section */
+    .birthday-info {
+      margin:50px auto;
+      padding:40px;
+      max-width:700px;
+      background:#fff;
+      border-radius:20px;
+      box-shadow:0 10px 25px rgba(155,89,182,0.15);
+    }
+    .birthday-info h2 {
+      font-family:'Dancing Script',cursive;
+      font-size:34px;
+      color:#9333ea;
+      margin-bottom:20px;
+    }
+    .birthday-info p {
+      font-size:18px;
+      margin:12px 0;
+      color:#4c1d95;
+    }
+
+    /* Timeline */
+    .timeline {
+      margin:70px auto;
+      padding:20px;
+      max-width:800px;
+      position:relative;
+    }
+    .timeline::before {
+      content:"";
+      position:absolute;
+      top:0;left:50%;
+      width:4px;height:100%;
+      background:#e9d5ff;
+      transform:translateX(-50%);
+    }
+    .timeline-item {
+      background:white;
+      padding:24px;
+      border-radius:16px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);
+      margin:20px 0;
+      width:45%;
+      position:relative;
+    }
+    .timeline-item.left {
+      left:0;
+    }
+    .timeline-item.right {
+      left:55%;
+    }
+    .timeline-item span {
+      font-weight:bold;
+      color:#9333ea;
+    }
+    .timeline-item h3 {
+      margin:10px 0;
+      color:#6b21a8;
+    }
+
+    /* Memories */
+    .memories {
+      margin:70px 0;
+      padding:40px;
+      text-align:center;
+      background:linear-gradient(180deg,#faf5ff,#fdf2f8);
+      border-radius:20px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.05);
+    }
+    .memories h2 {
+      font-family:'Dancing Script',cursive;
+      font-size:34px;
+      color:#a21caf;
+      margin-bottom:30px;
+    }
+    .memory-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:22px;
+    }
+    .memory-card {
+      background:#fff;
+      padding:18px;
+      border-radius:16px;
+      box-shadow:0 5px 15px rgba(0,0,0,0.07);
+      transition:transform 0.3s, box-shadow 0.3s;
+      text-align:center;
+    }
+    .memory-card:hover {
+      transform:translateY(-6px);
+      box-shadow:0 10px 24px rgba(147,51,234,0.2);
+    }
+    .memory-card img {
+      width:100%;
+      height:250px;
+      object-fit:cover;
+      border-radius:14px;
+      margin-bottom:10px;
+    }
+    .memory-card .date {
+      display:block;
+      font-weight:bold;
+      color:#9333ea;
+      margin-bottom:8px;
+    }
+
+    /* Letter */
+    .letter {
+      margin:70px auto;
+      padding:45px 30px;
+      max-width:700px;
+      background:#fff;
+      border-radius:22px;
+      box-shadow:0 12px 28px rgba(0,0,0,0.1);
+      position:relative;
+    }
+    .letter h2 {
+      font-family:'Dancing Script',cursive;
+      font-size:38px;
+      color:#a21caf;
+      margin-bottom:24px;
+    }
+    .letter p {
+      font-size:18px;
+      line-height:1.7;
+      margin-bottom:18px;
+      color:#4b3b47;
+    }
+    .heart {
+      font-size:28px;
+      color:#ec4899;
+      animation:pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%{transform:scale(1);}
+      50%{transform:scale(1.25);}
+      100%{transform:scale(1);}
+    }
+    .letter::after {
+      content:"💌 ✨ 🌸 🎂 🌙";
+      position:absolute;
+      bottom:-25px;left:50%;
+      transform:translateX(-50%);
+      font-size:26px;
+      opacity:0.8;
+    }
+
+    footer {
+      margin:60px 0 20px;
+      font-size:15px;
+      color:#6b21a8;
+    }
+  </style>
+</head>
+<body>
+  <!-- floating background -->
+  <div class="floating">
+    <span style="left:10%; animation-delay:0s;">💖</span>
+    <span style="left:30%; animation-delay:2s;">🌸</span>
+    <span style="left:50%; animation-delay:4s;">💜</span>
+    <span style="left:70%; animation-delay:1s;">🌹</span>
+    <span style="left:90%; animation-delay:3s;">💖</span>
+    <span style="left:20%; animation-delay:5s;">🌸</span>
+    <span style="left:60%; animation-delay:7s;">💜</span>
+    <span style="left:80%; animation-delay:6s;">🌹</span>
+  </div>
+
+  <header>
+    <h1>Happy Birthday My Love 🎂</h1>
+    <p>Today we celebrate the most amazing person in my life. Every moment with you is a treasure, every memory a gift. This website is my love letter to you. 💖</p>
+  </header>
+
+  <section class="birthday-info">
+    <h2>Your Special Day ✨</h2>
+    <p><strong>Date:</strong> 30th August 2005</p>
+    <p><strong>Lucky Traits:</strong> Bright thinker, kind soul, magnetic charm 💫</p>
+    <p><strong>Good Things that Day:</strong> The stars blessed harmony and joy 🌟, the moon’s calm phase brought love and friendship energy 🌸, and the day carried a sparkle of new beginnings ✨</p>
+    <p><strong>Special Vibes for You:</strong> Born to inspire, to bring laughter into hearts 💖, and to make every place you step into a little more magical 🌺</p>
+  </section>
+
+  <section class="timeline">
+    <div class="timeline-item left">
+      <span>February</span>
+      <h3>First Meeting: The Day Everything Changed</h3>
+      <p>From the moment I saw you, I knew my life would never be the same. Your smile lit up the entire room and captured my heart instantly. ✨</p>
+    </div>
+
+    <div class="timeline-item right">
+      <span>March</span>
+      <h3>First Date: Our Perfect Beginning</h3>
+      <p>That magical evening when we talked for hours, laughed until our cheeks hurt, and I realized I wanted to spend forever getting to know you better. 🌹</p>
+    </div>
+
+    <div class="timeline-item left">
+      <span>April</span>
+      <h3>First Trip Together: Adventures Begin</h3>
+      <p>Exploring new places with you by my side, creating memories that will last a lifetime. Every destination becomes special when you're there. 🗺</p>
+    </div>
+
+    <div class="timeline-item right">
+      <span>May</span>
+      <h3>Special Moments</h3>
+      <p>All the little moments that made us stronger – late night conversations, surprise dates, comforting each other, and growing together. 💞</p>
+    </div>
+
+    <div class="timeline-item left">
+      <span>June</span>
+      <h3>Anniversaries</h3>
+      <p>Every month proves our love grows stronger with time. 💍</p>
+    </div>
+
+    <div class="timeline-item right">
+      <span>July & Beyond</span>
+      <h3>Today: Your Special Day</h3>
+      <p>Another year of your beautiful existence, another year of being blessed to love you. Here's to many more birthdays together, my love. 🎉</p>
+    </div>
+  </section>
+
+  <!-- Memories with photos -->
+  <section class="memories">
+    <h2>Our Memories 📸</h2>
+    <div class="memory-grid">
+      <div class="memory-card">
+        <img src="./images/first.jpg" alt="First Meet">
+        <span class="date">Our First photo Together</span>
+        <p>Our very first meet at Vignan 🎓💫</p>
+      </div>
+      <div class="memory-card">
+        <img src="./images/meet.jpg" alt="Coffee Date">
+        <span class="date">Nov 2022</span>
+        <p>Coffee & endless talks ☕💖</p>
+      </div>
+      <div class="memory-card">
+        <img src="./images/hand.jpg" alt="Valentine’s">
+        <span class="date">Feb 2023</span>
+        <p>First Valentine’s together 💌🌹</p>
+      </div>
+      <div class="memory-card">
+        <img src="./images/black.jpg" alt="Study Sessions">
+        <span class="date">Apr 2023</span>
+        <p>Study sessions turned into laughter 📚😂</p>
+      </div>
+      <div class="memory-card">
+        <img src="./images/ethnic.jpg" alt="Evening Walks">
+        <span class="date">Jun 2023</span>
+        <p>Evening walks & secret dreams 🌇✨</p>
+      </div>
+      <div class="memory-card">
+        <img src="./images/1st Birthday .jpg" alt="Anniversary">
+        <span class="date">Aug 2023</span>
+        <p>One year of love & memories 🎉💕</p>
+      </div>
+      <div class="memory-card">
+        <img src="./images/fav.jpg" alt="Anniversary">
+        <span class="date">Aug 2023</span>
+        <p>One year of love & memories 🎉💕</p>
+      </div>
+      <div class="memory-card">
+        <img src="./images/2nd birthday.jpg" alt="Anniversary">
+        <span class="date">Aug 2023</span>
+        <p>One year of love & memories 🎉💕</p>
+      </div>
+      <div class="memory-card">
+        <img src="./images/beach.jpg" alt="Anniversary">
+        <span class="date">Aug 2023</span>
+        <p>One year of love & memories 🎉💕</p>
+      </div>
+      <div class="memory-card">
+        <img src="./images/boo.jpg" alt="Anniversary">
+        <span class="date">Aug 2023</span>
+        <p>One year of love & memories 🎉💕</p>
+      </div>
+      <div class="memory-card">
+        <img src="./images/us.jpg" alt="Anniversary">
+        <span class="date">Aug 2023</span>
+        <p>One year of love & memories 🎉💕</p>
+      </div>
+      <div class="memory-card">
+        <img src="./images/last.jpg" alt="Anniversary">
+        <span class="date">Aug 2023</span>
+        <p>One year of love & memories 🎉💕</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="letter">
+    <h2>My Letter to You 💌</h2>
+    <p>From the day we met in Vignan, my life has never been the same. Those little smiles, late-night talks, and silly arguments have all become treasures in my heart.</p>
+    <p>You’ve made every moment since Sept 2022 magical. Even though we are walking different academic paths—me in BBA and you in B.Tech—our hearts have always been in sync. 💕</p>
+    <p>Thank you for giving me the most beautiful year of memories. I can’t wait for all the years ahead filled with laughter, love, and togetherness. You are my forever, my today, and all of my tomorrows. <span class="heart">❤</span></p>
+  </section>
+
+  <footer>
+    Made with infinite love 💖 | Forever Yours
+  </footer>
+
+  <!-- Confetti Script -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+  window.addEventListener("load", () => {
+    confetti({ particleCount: 200, spread: 120, origin: { y: 0.6 }, colors:['#ec4899','#a78bfa','#f9a8d4','#c4b5fd'] });
+    setTimeout(() => { confetti({ particleCount: 150, spread: 100, origin: { y: 0.7 }, colors:['#f9a8d4','#c084fc','#f0abfc'] }); }, 1000);
+    setTimeout(() => { confetti({ particleCount: 250, spread: 160, origin: { y: 0.5 }, colors:['#e879f9','#a78bfa','#f472b6'] }); }, 2000);
+  });
+</script>
+</body>
+</html>
